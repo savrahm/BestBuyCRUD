@@ -7,11 +7,11 @@ using System.Text;
 
 namespace BestBuyBestPractices
 {
-    public class DapperDepartmentRepository : IDepartmentRepository
+    public class DepartmentRepository : IDepartmentRepository
     {
         private readonly IDbConnection _connection;
 
-        public DapperDepartmentRepository(IDbConnection connection)
+        public DepartmentRepository(IDbConnection connection)
         {
             _connection = connection;
         }
@@ -23,7 +23,7 @@ namespace BestBuyBestPractices
 
         public void InsertDepartment(string newDepartmentName)
         {
-            _connection.Execute("INSERT INTO Departments (Name) VALUES (@departmnetName);", new { departmentName = newDepartmentName });
+            _connection.Execute("INSERT INTO Departments (Name) VALUES (@departmentName);", new { departmentName = newDepartmentName });
         }
     }
 }

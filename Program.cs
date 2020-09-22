@@ -7,31 +7,16 @@ using Microsoft.Extensions.Configuration;
 
 namespace BestBuyBestPractices
 {
-    class Program
+    class Program : Connect
     {
         static void Main(string[] args)
         {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+            //UserInteraction.UserUpdateProduct();
 
-            string connString = config.GetConnectionString("DefaultConnection");
-            IDbConnection conn = new MySqlConnection(connString);
-            var repo = new DapperDepartmentRepository(conn);
+            //var prodRepo = new ProductRepository(conn);
+            //prodRepo.UpdateProduct("Test II: The Retesting", 14, 7, 941);
 
-            Console.WriteLine("Type a new Department name.");
-
-            var newDepartment = Console.ReadLine();
-
-            repo.InsertDepartment(newDepartment);
-
-            var departments = repo.GetAllDepartments();
-
-            foreach (var dept in departments)
-            {
-                Console.WriteLine(dept.Name);
-            }
+            UserInteraction.UserDeleteProduct();
         }
     }
 }
